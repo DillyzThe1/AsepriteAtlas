@@ -4,9 +4,9 @@
     "license": "GPL",
     "tags": ["aseprite","atlas","atlasframes","frames","animation","ase",".aseprite",".ase",".json","json","pixel","pixelated","pixelation","anim","anims","sprites","sprite","flxsprite","flx"],
     "description": "This haxelib allows you to parse the Asprite JSON exports as atlas frames!",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "classPath": "asepriteatlas/",
-    "releasenote": "Pre-Alpha; Nothing should work as excepted.",
+    "releasenote": "First full release. Sprites load as normal.",
     "contributors": ["DillyzThe1"],
     "dependencies": {},
     "main": "src_test.Main"

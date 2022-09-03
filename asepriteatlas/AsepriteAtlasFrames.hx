@@ -1,6 +1,7 @@
 package asepriteatlas;
 
 import asepriteatlas.AspriteJSON.AsepriteJsonData;
+import asepriteatlas.AspriteJSON.AseprtieJsonMetaData;
 import asepriteatlas.AspriteJSON.AseprtieJsonMetaDataFrameTag;
 import asepriteatlas.AspriteJSON.AsperiteFrameData;
 import flixel.FlxG;
@@ -9,9 +10,12 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import haxe.Exception;
 import haxe.Json;
 import lime.utils.Assets;
 import openfl.geom.Rectangle;
+
+using Type;
 
 class AsepriteAtlasFrames
 {
@@ -65,52 +69,59 @@ class AsepriteAtlasFrames
 		// trace(data == null);
 		// trace('class name 1 ' + Type.getClassName(Type.getClass(data.meta)));
 		// trace('class name 2 ' + Type.getClassName(Type.getClass(data.frames)));
-		trace(data.frames);
-
-		var convFrames:Map<String, AsperiteFrameData> = cast(data.frames);
-
-		trace(convFrames);
-
-		var allChecksBefore:Iterator<String> = convFrames.keys();
-		var allChecksOrdered:Map<Int, String> = [];
+		// trace('class name -2 ' + AsepriteAtlasFrames.getClassName());
+		// trace('class name -1 ' + AseprtieJsonMetaData.getClassName());
+		// trace('class name 0 ' + frameTags.getClass().getClassName());
+		// trace('class name 1 ' + data.meta.getClass().getClassName());
+		// trace('class name 2 ' + data.frames.getClass().getClassName());
 
 		var highestIndex:Int = 0;
-
-		for (i in allChecksBefore)
-		{
-			var checkNumb:Int = Std.parseInt(i.substring(i.lastIndexOf(" "), i.lastIndexOf(".") - 1));
-			allChecksOrdered.set(checkNumb, i);
-
-			if (checkNumb > highestIndex)
-				highestIndex = checkNumb;
-		}
-
+		for (o in frameTags)
+			if (o.to > highestIndex)
+				highestIndex = o.to;
 		highestIndex++;
+		// trace(highestIndex);
+		// trace(data.frames);
+		// trace(frameTags);
+
+		var imgName:String = data.meta.image.substring(0, data.meta.image.lastIndexOf('.'));
+		// trace(imgName);
 
 		for (i in 0...highestIndex)
 		{
-			var frameData:AsperiteFrameData = convFrames.get(allChecksOrdered.get(i));
+			try
+			{
+				var frameData:AsperiteFrameData = Reflect.getProperty(data.frames, '$imgName $i.aseprite');
+				// trace(frameData);
 
-			var size:Rectangle;
-			if (frameData.trimmed)
-				size = new Rectangle(-frameData.spriteSourceSize.x, -frameData.spriteSourceSize.y, frameData.spriteSourceSize.w, frameData.spriteSourceSize.h);
-			else
-				size = new Rectangle(0, 0, frameData.sourceSize.x, frameData.sourceSize.y);
-			var sourceSize = FlxPoint.get(size.width, size.height);
+				var size:Rectangle;
+				if (frameData.trimmed)
+					size = new Rectangle(-frameData.spriteSourceSize.x, -frameData.spriteSourceSize.y, frameData.spriteSourceSize.w,
+						frameData.spriteSourceSize.h);
+				else
+					size = new Rectangle(0, 0, frameData.sourceSize.x, frameData.sourceSize.y);
+				var sourceSize = FlxPoint.get(size.width, size.height);
 
-			if (frameData.rotated && !frameData.trimmed)
-				sourceSize.set(size.height, size.width);
+				if (frameData.rotated && !frameData.trimmed)
+					sourceSize.set(size.height, size.width);
 
-			var namee:String = thousandNumbFormat(i);
+				var namee:String = thousandNumbFormat(i);
 
-			for (o in frameTags)
-				if (o.from >= i && o.to <= i)
-					namee = '${o.name}${thousandNumbFormat(i)}';
+				for (o in frameTags)
+				{
+					if (i >= o.from && i <= o.to)
+						namee = '${o.name}${thousandNumbFormat(i)}';
+				}
 
-			trace(namee);
+				// trace(namee);
 
-			frames.addAtlasFrame(FlxRect.get(frameData.frame.x, frameData.frame.y, frameData.frame.w, frameData.frame.h), sourceSize,
-				FlxPoint.get(-size.left, -size.top), namee, frameData.rotated ? 90 : 0, false, false);
+				frames.addAtlasFrame(FlxRect.get(frameData.frame.x, frameData.frame.y, frameData.frame.w, frameData.frame.h), sourceSize,
+					FlxPoint.get(-size.left, -size.top), namee, frameData.rotated ? 90 : 0, false, false);
+			}
+			catch (e:Exception)
+			{
+				trace('Error parsing/recieving frame! ${e} (Are you using the .asperite format?)\n${e.message}');
+			}
 		}
 
 		return frames;
