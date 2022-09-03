@@ -3,12 +3,18 @@
 
 # Setup (Aseprite)
 1. Properly tag your animations.<br>
-<img align="left" src="guide and project files/guide0.png">
+<p align="left">
+	<img align="left" src="guide and project files/guide0.png">
+</p>
 <br>2. Select all frames.<br>
-<img align="left" src="guide and project files/guide1.png">
+<p align="left">
+	<img align="left" src="guide and project files/guide1.png">
+</p>
 <br>3. File > Export Sprite Sheet<br>
 4. (optional) Edit the "Borders" tab for optimization<br>
-<img align="left" src="guide and project files/guide2.png">
+<p align="left">
+	<img align="left" src="guide and project files/guide2.png">
+</p>
 <br>5. Go to output and enable both JSON and PNG output.<br>
 6. Export!<br>
 
