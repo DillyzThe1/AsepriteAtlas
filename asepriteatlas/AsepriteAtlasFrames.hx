@@ -65,34 +65,25 @@ class AsepriteAtlasFrames
 		// used to find the frame we're on
 		var frameTags:Array<AseprtieJsonMetaDataFrameTag> = data.meta.frameTags;
 
-		// trace(data == null);
-		// trace('class name 1 ' + Type.getClassName(Type.getClass(data.meta)));
-		// trace('class name 2 ' + Type.getClassName(Type.getClass(data.frames)));
-		// trace('class name -2 ' + AsepriteAtlasFrames.getClassName());
-		// trace('class name -1 ' + AseprtieJsonMetaData.getClassName());
-		// trace('class name 0 ' + frameTags.getClass().getClassName());
-		// trace('class name 1 ' + data.meta.getClass().getClassName());
-		// trace('class name 2 ' + data.frames.getClass().getClassName());
+		// get the basic name we can use for reflecting
+		var imgName:String = data.meta.image.substring(0, data.meta.image.lastIndexOf('.'));
 
+		// we also need the maximum amount of frames
 		var highestIndex:Int = 0;
 		for (o in frameTags)
 			if (o.to > highestIndex)
 				highestIndex = o.to;
 		highestIndex++;
-		// trace(highestIndex);
-		// trace(data.frames);
-		// trace(frameTags);
 
-		var imgName:String = data.meta.image.substring(0, data.meta.image.lastIndexOf('.'));
-		// trace(imgName);
-
+		// now let's get all the frames
 		for (i in 0...highestIndex)
 		{
 			try
 			{
+				// reflect the data right from the object bc it's not an array (:sadsponge:)
 				var frameData:AsperiteFrameData = Reflect.getProperty(data.frames, '$imgName $i.aseprite');
-				// trace(frameData);
 
+				// recreate and simplify the process from the getSparrow function but for aseprite
 				var size:Rectangle;
 				if (frameData.trimmed)
 					size = new Rectangle(-frameData.spriteSourceSize.x, -frameData.spriteSourceSize.y, frameData.spriteSourceSize.w,
@@ -104,16 +95,14 @@ class AsepriteAtlasFrames
 				if (frameData.rotated && !frameData.trimmed)
 					sourceSize.set(size.height, size.width);
 
+				// let's name it like how an adobe animate xml would for convienence
 				var namee:String = thousandNumbFormat(i);
 
 				for (o in frameTags)
-				{
 					if (i >= o.from && i <= o.to)
 						namee = '${o.name}${thousandNumbFormat(i)}';
-				}
 
-				// trace(namee);
-
+				// add the frame
 				frames.addAtlasFrame(FlxRect.get(frameData.frame.x, frameData.frame.y, frameData.frame.w, frameData.frame.h), sourceSize,
 					FlxPoint.get(-size.left, -size.top), namee, frameData.rotated ? 90 : 0, false, false);
 			}

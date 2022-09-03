@@ -55,13 +55,14 @@ typedef AsperiteFrameData =
 // main json
 typedef AsepriteJsonData =
 {
-	var frames:Dynamic; // Map<String, AsperiteFrameData>;
+	var frames:Dynamic; // i can't typedef this for simplicity; i've tried. we just use reflect now.
 	var meta:AseprtieJsonMetaData;
 }
 
 // class meant to parse the aseprite json format
 class AspriteJSON
 {
+	// just for testing ig
 	public static function getFromFile(path:String):AsepriteJsonData
 	{
 		return Json.parse(Assets.getText(path));
