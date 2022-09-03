@@ -3,19 +3,13 @@
 
 # Setup (Aseprite)
 1. Properly tag your animations.<br>
-<p align="left">
-	<img align="left" src="guide and project files/guide0.png">
-</p>
-<br>2. Select all frames.<br>
-<p align="left">
-	<img align="left" src="guide and project files/guide1.png">
-</p>
-<br>3. File > Export Sprite Sheet<br>
+![GitHub Logo](/guide and project files/guide0.png)<br/>
+2. Select all frames.<br>
+![GitHub Logo](/guide and project files/guide1.png)<br/>
+3. File > Export Sprite Sheet<br>
 4. (optional) Edit the "Borders" tab for optimization<br>
-<p align="left">
-	<img align="left" src="guide and project files/guide2.png">
-</p>
-<br>5. Go to output and enable both JSON and PNG output.<br>
+![GitHub Logo](/guide and project files/guide2.png)<br/>
+5. Go to output and enable both JSON and PNG output.<br>
 6. Export!<br>
 
 # Usage (Haxe)
