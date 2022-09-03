@@ -1,7 +1,6 @@
 package asepriteatlas;
 
 import asepriteatlas.AspriteJSON.AsepriteJsonData;
-import asepriteatlas.AspriteJSON.AseprtieJsonMetaData;
 import asepriteatlas.AspriteJSON.AseprtieJsonMetaDataFrameTag;
 import asepriteatlas.AspriteJSON.AsperiteFrameData;
 import flixel.FlxG;
