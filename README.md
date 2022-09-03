@@ -21,5 +21,8 @@
 6. Compile<br>
 <br>
 Visual example:<br>
-![GitHub Logo](/guide/example.png)<br/>
+<img align="left" src="guide/example.png"><br>
+<br>
+<br>
+<br>
 bottom text<br>
