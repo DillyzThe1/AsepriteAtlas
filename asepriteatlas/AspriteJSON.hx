@@ -55,7 +55,7 @@ typedef AsperiteFrameData =
 // main json
 typedef AsepriteJsonData =
 {
-	var frames:Dynamic;
+	var frames:Dynamic; // Map<String, AsperiteFrameData>;
 	var meta:AseprtieJsonMetaData;
 }
 
