@@ -4,8 +4,8 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="AsepriteAtlas" file="AsepriteAtlas" main="test.Main" version="0.0.1" company="HaxeFlixel" />
-
+	<app title="AsepriteAtlas" file="AsepriteAtlas" main="src_test.Main" version="0.0.1" company="HaxeFlixel" />
+ 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
 	<app preloader="flixel.system.FlxPreloader" />

@@ -1,4 +1,4 @@
-package test;
+package src_test;
 
 import flixel.FlxGame;
 import openfl.display.FPS;
