@@ -22,3 +22,4 @@
 <br>
 Visual example:<br>
 ![GitHub Logo](/guide/example.png)<br/>
+bottom text<br>
