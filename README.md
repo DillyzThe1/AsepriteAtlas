@@ -1,5 +1,6 @@
 # AsepriteAtlas
- A haxelib meant for parsing the Asprite JSON format & making a frame atlas.
+ A haxelib meant for parsing the Asprite JSON format & making a frame atlas.<br>
+ Install by typing `haxelib install asepriteatlas` in any shell such as command prompt.
 
 # Setup (Aseprite)
 1. Properly tag your animations.<br>
@@ -12,7 +13,7 @@
 5. Go to output and enable both JSON and PNG output.<br>
 6. Export!<br>
 
-# Usage (Haxe)
+# Usage (HaxeFlixel)
 1. Add <haxelib name="asepriteatlas"/> to Project.xml
 2. Initiate an FlxSprite. (flixel.FlxSprite)<br>
 3. Set the FlxSprite variable "frames" to "asepriteatlas.AsepriteAtlasFrames.fromI8('assets/images/spr.png', 'assets/images/spr.json')";<br>
@@ -22,7 +23,3 @@
 <br>
 Visual example:<br>
 <img align="left" src="guide/example.png"><br>
-<br>
-<br>
-<br>
-bottom text<br>
