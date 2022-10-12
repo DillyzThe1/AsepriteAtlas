@@ -1,12 +1,12 @@
 {
   "name": "asepriteatlas",
   "url" : "https://github.com/DillyzThe1/AsepriteAtlas",
-  "license": "GPL",
+  "license": "Apache-2.0",
   "tags": ["aseprite","atlas","atlasframes","frames","animation","ase",".aseprite",".ase",".json","json","pixel","pixelated","pixelation","anim","anims","sprites","sprite","flxsprite","flx"],
   "description": "This haxelib allows you to parse the Asprite JSON exports as atlas frames!",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "classPath": "source/",
-  "releasenote": "First full release. Sprites load as normal.",
+  "releasenote": "Switch to Apache 2.0's license due to new info on how copyleft works.",
   "contributors": ["DillyzThe1"],
   "dependencies": {},
   "main": "src_test.Main"
